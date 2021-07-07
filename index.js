@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 const app = express();
 const mongoose = require('mongoose');
 const { mongoDbString } = require('./config.js');
@@ -12,8 +13,10 @@ mongoose
   })
   .catch((err) => console.error(err.message));
 
-app.get('/', function (req, res) {
-  res.send('Serveris veikia');
+app.use(morgan('dev'));
+
+app.get('/', (req, res) => {
+  res.status(200).json('Serveris veikia on port 4000');
 });
 
 // // POST method route
