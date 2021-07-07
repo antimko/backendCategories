@@ -1,15 +1,18 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const mongoose = require('mongoose');
 const { mongoDbString } = require('./config.js');
-const Post = require('./models/post');
+// const Post = require('./categories');
 
 mongoose
-  .connect(mongoDbString, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(db.connect(process.env.MONGO_CONNECT_STRING), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => {
     console.log('Conneced to my Mongoose');
-    app.listen(4000);
   })
   .catch((err) => console.error(err.message));
 
