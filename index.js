@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const { DataBase2 } = require('./config.js');
+const { mongoDbString } = require('./config.js');
 const Post = require('./models/post');
 
 mongoose
